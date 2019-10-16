@@ -8,4 +8,4 @@ $sceneHosp = $_POST['sceneHosp'];
 ?>
 
 MercyOne AirMed <?php echo $base ?> was dispatched to <?php echo $sending." " .$ifrVfr. " " ?>
-for a <?php echo $sceneHosp ?>
+for a <?php echo $sceneHosp ?> flight for a <?php  ?>
