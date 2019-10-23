@@ -1,58 +1,194 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Narrative Template</title>
-  </head>
-  <body>
-    <form class="" action="final.php" method="post">
-  <!--Base-->
-      <label for="base">
-        <select name="base">
-          <option value="One Des Moines">One</option>
-          <option value="Two Knoxville">Two</option>
-          <option value="Three Mason City">Three</option>
-          <option value="Four Sioux City">Four</option>
-        </select>
-      </label>
 
+<head>
+  <meta charset="utf-8">
+  <title>Narrative Template</title>
+
+  <script type="text/javascript">
+    function airwaySelect() {
+      if (document.querySelector('#airway').value === "Secured") {
+        document.querySelector('#intubation').style.display = 'block';
+      } else {
+        document.querySelector('#intubation').style.display = 'none';
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form class="" action="final.php" method="post">
+    <!--Base-->
+    <label for="base">
+      <select name="base">
+        <option value="One Des Moines">One</option>
+        <option value="Two Knoxville">Two</option>
+        <option value="Three Mason City">Three</option>
+        <option value="Four Sioux City">Four</option>
+      </select>
+    </label>
+    <br>
     <!--Sending Unit/Facility-->
-      <label for="sending">
-        sending
-        <input type="text" name="sending" value="">
+    <label for="sending">
+      Sending Hospital/Unit
+      <input type="text" name="sending" value="">
+    </label>
+    <br>
+    <!--VFR vs IFR-->
+    <label for="ifrVfr">
+      IFR or VFR:
+      <select name="ifrVfr">
+        <option value="VFR">VFR</option>
+        <option value="IFR">IFR</option>
+      </select>
+    </label>
+    <br>
+    <!--Scene vs Hospital-->
+    <label for="sceneHosp">
+      Scene or Hospital:
+      <select name="sceneHosp">
+        <option value="Scene">Scene</option>
+        <option value="Interfacility">Interfacility</option>
+      </select>
+    </label>
+    <br>
+    <!--Patient Description-->
+    <label for="ptDescription">
+      Pt Description
+      <br>
+      <textarea rows="4" cols="50" name="ptDescription" value="">
+          </textarea>
+    </label>
+
+    <h3>Primary Assessment</h3>
+
+    <!--Airway-->
+    <label for="airway">
+      Airway:
+      <select id="airway" name="airway" onchange="airwaySelect()">
+        <option value="">Select One</option>
+        <option value="Patent. Self Maintained.">Patent. Self Maintained</option>
+        <option value="Obstructed.">Obstructed</option>
+        <option value="Secured">Secured with Device</option>
+      </select>
+    </label>
+
+    <!--Shows the Div an Advanced Airway is in place-->
+    <div id="intubation" style='display:none;'>
+      <!--ETT Size-->
+      <label for="ett">
+        ETT Size:
+        <input type="text" name="ett" value="">
       </label>
 
-      <!--VFR vs IFR-->
-      <label for="ifrVfr">
-        <select name="ifrVfr">
-          <option value="VFR">VFR</option>
-          <option value="IFR">IFR</option>
+      <!--Device-->
+      <label for="device">
+        Secured At:
+        <select id="device" name="device">
+          <option value="">Select One</option>
+          <option value="ETT">ETT</option>
+          <option value="KingLT">KingLT</option>
         </select>
       </label>
-
-      <!--Scene vs Hospital-->
-      <label for="sceneHosp">
-        <select name="sceneHosp">
-          <option value="Scene">Scene</option>
-          <option value="Interfacility">Interfacility</option>
+      <!--depth-->
+      <label for="ETT">
+        ETT Depth:
+        <input type="text" name="ettDepth" value="">
+      </label>
+      <!--Secured at-->
+      <label for="securedAt">
+        Secured At:
+        <select id="securedAt" name="securedAt">
+          <option value="">Select One</option>
+          <option value="Lips">Lips</option>
+          <option value="Teeth">Teeth</option>
         </select>
       </label>
+      <br>
+    </div>
+    <!--End Intubation Div-->
+    <br>
 
-      <!--Patient Description-->
-        <label for="ptDescription">
-          Pt Description
-          <input type="text" name="ptDescription" value="">
-        </label>
+    <!--Airway Free Text-->
+    <label for="airwayText">
+      Airway Free Text
+      <br>
+      <textarea rows="4" cols="50" name="airwayText" value="">
+        </textarea>
+    </label>
+    <br>
+
+    <!--Breathing-->
+    <label for="breating">
+      Breathing:
+      <select id="breathing" name="breathing">
+        <option value="">Select One</option>
+        <option value="Non-Labored.">Non-Labored</option>
+        <option value="Increased work of breathing noted.">Increased work of breathing noted</option>
+        <option value="Labored.">Labored</option>
+        <option value="Apenic.">Apenic</option>
+        <option value="Assisted with BVM.">Assisted with BVM</option>
+        <option value="Assisted via bedside vent.">Assisted via bedside vent</option>
+      </select>
+    </label>
+    <br>
+    <!--Breathing Free Text-->
+    <label for="breathingText">
+      Breathing Free Text
+      <br>
+      <textarea rows="4" cols="50" name="breathingText" value="">
+            </textarea>
+    </label>
+    <br>
+    <!--Circulation-->
+    <label for="circ">
+      Circulation:
+      <select id="circ" name="circ">
+        <option value="">Select One</option>
+        <option value="2+ Radial Pulse. No active bleeding.">2+ Radial Pulse. No active bleeding</option>
+        <option value="1+ Radial Pulse. No active bleeding.">1+ Radial Pulse. No active bleeding</option>
+        <option value="2+ Radial Pulse. Bleeing contorlled.">2+ Radial Pulse. Bleeing contorlled</option>
+        <option value="1+ Radial Pulse. Bleeing controlled.">1+ Radial Pulse. Bleeding controlled</option>
+        <option value="Pulseless. Manual CPR in progress.">Pulseless. Manual CPR in progress.</option>
+        <option value="Pulseless. CPR being done via mechanical device.">Pulseless. CPR being done via mechanical device.</option>
+      </select>
+    </label>
+    <br>
+    <!--Circulation Free Text-->
+    <label for="circText">
+      Circulation Free Text
+      <br>
+      <textarea rows="4" cols="50" name="circText" value="">
+      </textarea>
+    </label>
+    <br>
+    <!--LOC-->
+    <label for="circ">
+      Level of Consciousness:
+      <select id="loc" name="loc">
+        <option value="">Select One</option>
+        <option value="Alert">Alert.</option>
+        <option value="Responds to Verbal">Responds to Verbal.</option>
+        <option value="Responds to Pain">Responds to Pain.</option>
+        <option value="Unresponsive">Unresponsive.</option>
+
+      </select>
+    </label>
 
 
 
+
+
+
+    <br>
     <!--Submit Button-->
-      <label for="submit">
-        <input type="submit" name="submit" value="submit">
-      </label>
+    <label for="submit">
+      <input type="submit" name="submit" value="submit">
+    </label>
 
-    </form>
+  </form>
 
 
-  </body>
+</body>
+
 </html>
